@@ -1,0 +1,15 @@
+<div class="card-group allvideos">
+{{#each items}}
+<div class="col-xs-2">
+<div class="card tubeCard" style="width: 18rem;">
+  <img class="card-img-top" src="{{snippet.thumbnails.high.url}}" alt="{{snippet.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{snippet.title}}</h5>
+    <p class="card-text">{{snippet.description}}</p>
+    <button class="btn btn-primary viewBtn" value="{{id.videoId}}">View Video</button>
+    <button class="btn btn-primary faveIt" value="{{id.videoId}}">Favorite</button>
+  </div>
+</div>
+</div>
+{{/each}}
+</div>
