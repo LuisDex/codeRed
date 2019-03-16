@@ -1,0 +1,186 @@
+body,html {
+    margin:0;
+    padding:0;
+    width:100%;
+    font-family: sans-serif;
+    background:url(../styles/bg01.jpg) no-repeat;
+    background-size:cover;
+
+
+}
+
+/* Landin Page Css */
+
+.search-box{
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    background: blue;
+    height:60px;
+    border-radius: 40px;
+    padding:10px;
+    
+    }
+    
+    .search-btn{
+        color:rgb(56, 181, 223);
+        float:right;
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+        background:blue;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        transition:0.4s;
+        
+    }
+    
+    .search-box:hover > .search-txt{
+        width: 400px;
+        padding: 0 6px;
+    }
+    
+    .search-box:hover > .search-btn{
+        background:white;
+    }
+    .search-txt{
+        border:none;
+        background:none;
+        outline:none;
+        float:left;
+        padding:0;
+        color:white;
+        font-size:16px;
+        transition:0.4s;
+        line-height: 40px;
+        width:0px;
+    
+    }
+    
+    
+    .landing-page{
+        width: 100%;
+        height:100vh;
+        background:#000;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .landing-page::after{
+        content:"";
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:url(bg01.jpg) no-repeat;
+        background-size:cover;
+        opacity: .3;
+        animation: anim 25s linear infinite;
+    }
+    
+    @keyframes anim{
+        50%{
+            transform: scale(2);
+        }
+        100%{
+            transform: scale(1);
+        }
+    }
+    
+    .page-content{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        z-index: 1;
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+    .page-content p{
+        color:white;
+    }
+    .page-content h1{
+        color:rgb(56, 181, 223);
+        text-transform: uppercase;
+        font-size: 50px;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+/* Main Page Css */
+.side-bar{
+    float:left;
+    width:100px;
+    height:100%;
+    margin-left:-100px;
+    background: rgb(56, 181, 223);
+    overflow: hidden;
+    transition: 0.8s all;
+}
+
+.side{
+    margin-left:0px;
+}
+.side-bar ul{
+    margin:0;
+    padding:0;
+}
+
+.side-bar ul li{
+    list-style: none;
+
+}
+
+.side-bar ul li a{
+    text-decoration: none;
+    color:white;
+    height:80px;
+    width:100%;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+    display:inline-block;
+    transition: 0.6s all;
+}
+
+.side-bar ul li a:hover{
+    background:blue;
+
+}
+.mysearch{
+    padding: 10px;
+}
+.btn2{
+    float:left;
+    padding: 0 10px;
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(56, 181, 223);
+    font-family:Ionicons;
+    cursor: pointer;
+}
+
+.btn2::before{
+  content:'\f32a';
+}
+
+.btnc::before{
+  content:'\f2c0';
+}
+
+.tubeCard{
+    margin: 10px;
+    background:#f5a148;
+    padding:5px;
+    height:550px;
+}
+
+/* Video Css */
+
+.video-area{
+margin:20px;
+}

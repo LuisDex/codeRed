@@ -9,20 +9,29 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/video", function(req,res){
+
+   var embedID = req.query;
+   console.log(embedID);
+   res.render("video",embedID)
+  });
+
   // Grabbing youtube search results
   app.get("/youtube", function(req, res) {
     if (!req.query || !req.query.search) return res.status(404).end();
     let url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
-    url += "&maxResults=5";
+    url += "&maxResults=8";
     url += "&q=" + req.query.search.replace(" ","+");
+
     // Making sure the search is code related
     if (req.query.search.toLowerCase().indexOf("coding") === -1) url += "+coding";
 
-    url += "&key=" + process.env.YOUTUBE_API_KEY;
+    url += "&key=AIzaSyDru7LuP-KoZeYSJjNssMn-Jmf2cKODnMw";
     axios.get(url)
     .then(function(resp) {
+      var items = resp.data.items;
       res.render("youtube", {
-        items : resp.data.items
+        items : items
       })
     })
     .catch(function(err) {
@@ -45,3 +54,4 @@ module.exports = function(app) {
     });
   });
 };
+
