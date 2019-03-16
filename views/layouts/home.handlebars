@@ -12,31 +12,17 @@
   <title>Home Page</title>
 </head>
 <body>
-  
-  <div class="mainPage">
-    <div class="side-bar">
-      <ul>
-        <li><a class="icon ion-md-person sideBtn" value="profile" href="#"></a></li>
-        <li><a class="icon ion-logo-youtube sideBtn" value="youtube" href="#"></a></li>
-        <li><a class="icon ion-logo-reddit sideBtn" value="reddit" href="#"></a></li>
-        <li><a class="icon ion-logo-codepen sideBtn" value="codepen" href="#"></a></li>
-        <li><a class="icon ion-logo-slack sideBtn" value="slack" href="#"></a></li>
-        <li><a class="icon ion-md-bookmark sideBtn" value="faves" href="#"></a></li>
-      </ul>
-    </div>
-    <div class="btn2"></div>
-
-    <div class="row justify-content-sm-center">
-      <form class="form-inline my-2 my-lg-0 mysearch">
-        <input class="form-control mr-lg-2" type="search" id="searchbox" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0 searchbtn" type="submit">Search</button>
-      </form>
-    </div>
     {{{body}}}
-  </div>
   <script>
 
 var searchQuery = "";
+
+$(".search-box").on("submit", function(event) {
+  event.preventDefault();
+  searchQuery = $("#searchMain").val().trim();
+  sessionStorage.setItem("search", searchQuery);
+  location.replace("/youtube?search=" + searchQuery);
+});
 
 $(".sideBtn").on("click", function(event){
   event.preventDefault();

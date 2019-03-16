@@ -1,7 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
-    var Example = sequelize.define("Example", {
-      text: DataTypes.STRING,
-      description: DataTypes.TEXT
+  var User = sequelize.define("User", {
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [5]
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [8]
+      }
+    }
+  });
+
+  User.associate = function(models) {
+    User.hasMany(models.Favorite, {
+      onDelete: "CASCADE"
     });
-    return Example;
+    User.hasMany(models.Snippet, {
+      onDelete: "CASCADE"
+    });
   };
+  return User;
+};
