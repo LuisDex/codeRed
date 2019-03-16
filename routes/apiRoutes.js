@@ -16,6 +16,24 @@ module.exports = function(app) {
    res.render("video",embedID)
   });
 
+app.get("/reddit", function(req, res){
+  if (!req.query || !req.query.search) return res.status(404).end();
+  var queryURL = "http://www.reddit.com/r/coding/search.json";
+  axios({
+      url: queryURL,
+      method: "GET",
+      data: {
+          q: req.query.search,
+          restrict_sr: "true"
+      }
+    }).then(function(response) {
+        var children = response.data.children;
+        
+        res.json({items: children});
+    });
+});
+
+
   // Grabbing youtube search results
   app.get("/youtube", function(req, res) {
     if (!req.query || !req.query.search) return res.status(404).end();
