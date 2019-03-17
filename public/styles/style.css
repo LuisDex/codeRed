@@ -184,3 +184,21 @@ body,html {
 .video-area{
 margin:20px;
 }
+
+
+
+#editor {
+    width: 100%;
+    padding: 25%;
+    float: left;
+}
+
+#iframe {
+    width:30%;
+    background-color:white;
+    float:left;
+}
+#codeDiv {
+    display:none;
+    width:100%;
+}
