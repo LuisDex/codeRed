@@ -37,6 +37,23 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/stackoverflow", function(req, res) {
+    if (!req.query || !req.query.search) return res.status(404).end();
+    let url = "http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&site=stackoverflow&key=";
+    url += "bbiQ0G37kJkUnY2bDcjyyQ((";
+    url += "&q=" + req.query.search;
+    axios.get(url)
+    .then(function(resp) {
+      var items = resp.data.items;
+      res.render("stackoverflow", {
+        items : items
+      })
+    })
+    .catch(function(err) {
+      console.log(err);
+      res.status(500).end();
+    });
+  }); 
 
   // Grabbing youtube search results
   app.get("/youtube", function(req, res) {
