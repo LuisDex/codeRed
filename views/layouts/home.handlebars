@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,69 +13,108 @@
   {{!-- <script src="./js/main.js"></script> --}}
   <title>Home Page</title>
 </head>
+
 <body>
-    {{{body}}}
+  {{{body}}}
   <script>
 
-var searchQuery = "";
+    var searchQuery = "";
 
-$(".search-box").on("submit", function(event) {
-  event.preventDefault();
-  searchQuery = $("#searchMain").val().trim();
-  sessionStorage.setItem("search", searchQuery);
-  location.replace("/youtube?search=" + searchQuery);
-});
+    $(".search-box").on("submit", function (event) {
+      event.preventDefault();
+      searchQuery = $("#searchMain").val().trim();
+      sessionStorage.setItem("search", searchQuery);
+      location.replace("/youtube?search=" + searchQuery);
+    });
 
-$(".sideBtn").on("click", function(event){
-  event.preventDefault();
-  var sideValue = $(this).val();
-  console.log(sideValue);
-  var searchQuery = sessionStorage.getItem("search");
+    $(".sideBtn").on("click", function (event) {
+      event.preventDefault();
+      var sideValue = $(this).val();
+      console.log(sideValue);
+      var searchQuery = sessionStorage.getItem("search");
 
-  switch(sideValue)
-  {
-    case "profile":
-    break;
-    case "youtube":
-    console.log(searchQuery);
-    location.replace("/youtube?search=" + searchQuery);
-    break;
-    case "reddit":
-    break;
-    case "codepen":
-    break;
-    case "slack":
-    break;
-    case "faves":
-    break;
-  }
-});
+      switch (sideValue) {
+        case "profile":
+          break;
+        case "youtube":
+          console.log(searchQuery);
+          location.replace("/youtube?search=" + searchQuery);
+          break;
+        case "reddit":
+          break;
+        case "codepen":
+          break;
+        case "slack":
+          break;
+        case "faves":
+          break;
+      }
+    });
 
-$(".btn2").on("click", function() {
-  $(".btn2").toggleClass("btnc");
-  $(".side-bar").toggleClass("side");
-});
+    $(".btn2").on("click", function () {
+      $(".btn2").toggleClass("btnc");
+      $(".side-bar").toggleClass("side");
+    });
 
-$(".searchbtn").on("click", function (event) {
-  event.preventDefault();
-  searchQuery = $("#searchbox").val().trim();
-  sessionStorage.setItem("search", searchQuery);
-  location.replace("/youtube?search=" + searchQuery);
-});
+    $(".searchbtn").on("click", function (event) {
+      event.preventDefault();
+      searchQuery = $("#searchbox").val().trim();
+      sessionStorage.setItem("search", searchQuery);
+      location.replace("/youtube?search=" + searchQuery);
+    });
 
-$(".viewBtn").on("click",function(event)
-{
-  event.preventDefault();
-  var idVideo = $(this).val();
-  console.log($(this).val());
-  location.replace("/video?id=" + idVideo);
-});
+    $(".viewBtn").on("click", function (event) {
+      event.preventDefault();
+      var idVideo = $(this).val();
+      console.log($(this).val());
+      location.replace("/video?id=" + idVideo);
+    });
 
-$(".goBack").on("click",function(event){
-  event.preventDefault();
-  var searchQuery = sessionStorage.getItem("search");
-  location.replace("/youtube?search=" + searchQuery);
-});
+    $("#goBack").on("click", function (event) {
+      event.preventDefault();
+      var searchQuery = sessionStorage.getItem("search");
+      location.replace("/youtube?search=" + searchQuery);
+    });
+
+    $("#codeIt").on("click", function () {
+      $("#codeDiv").toggle()
+    })
+    let editor = $("#editor")
+    function update() {
+      var idoc = document.getElementById('iframe').contentWindow.document;
+      idoc.open();
+      idoc.write(editor.getValue());
+      idoc.close();
+    }
+    function setupEditor() {
+      editor = ace.edit("editor");
+      editor.setTheme("ace/theme/monokai");
+      editor.getSession().setMode("ace/mode/html");
+      editor.setValue(`<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+</body>
+</html>`, 1); //1 = moves cursor to end
+      editor.getSession().on('change', function () {
+        update();
+      });
+      editor.focus();
+      editor.setOptions({
+        fontSize: "16pt",
+        showLineNumbers: false,
+        showGutter: false,
+        vScrollBarAlwaysVisible: true,
+      });
+      editor.setShowPrintMargin(false);
+      editor.setBehavioursEnabled(true);
+    }
+    setupEditor()
+
+
+
   </script>
 </body>
+
 </html>

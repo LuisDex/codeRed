@@ -1,0 +1,19 @@
+{{#each items}}
+
+<div class="col-sm-6 offset-sm-3">
+    <div class="card text-center redditCard">
+        <div class="card-header">
+            <strong>Posted by:</strong> {{data.author}}
+        </div>
+        <div class="card-body">
+            <u><h5 class="card-title">{{data.title}}</h5></u>
+            <a href="{{data.url}}" target="_blank" class="card-text">{{data.url}}</a>
+        </div>
+        <div class="card-footer">
+            <strong>Upvotes:</strong>{{data.score}}
+            <button class="btn btn-primary saveIt">Save to Faves</button>
+        </div>
+    </div>
+</div>
+
+{{/each}}

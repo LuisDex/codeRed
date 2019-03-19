@@ -18,18 +18,22 @@ module.exports = function(app) {
 
   app.get("/reddit", function(req, res){
     if (!req.query || !req.query.search) return res.status(404).end();
-    var queryURL = "http://www.reddit.com/r/coding/search.json";
+    var queryURL = "https://www.reddit.com/r/coding/search.json?q=" + req.query.search;
     axios({
         url: queryURL,
         method: "GET",
         data: {
-            q: req.query.search,
+  
             restrict_sr: "true"
         }
       }).then(function(response) {
-          var children = response.data.children;
-          
-          res.json({items: children});
+          var children = response.data.data.children;
+
+          if(children.length > 10)
+          {
+           children = children.slice(0,10);
+          }
+          res.render("reddit",{items:children});
       });
   });
 
