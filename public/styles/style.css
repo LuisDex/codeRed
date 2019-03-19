@@ -111,6 +111,8 @@ body,html {
         font-weight: 900;
         margin-bottom: 20px;
     }
+
+
 /* Main Page Css */
 .side-bar{
     float:left;
@@ -135,7 +137,7 @@ body,html {
 
 }
 
-.side-bar ul li a{
+.side-bar ul li .sideBtn{
     text-decoration: none;
     color:white;
     height:80px;
@@ -145,12 +147,14 @@ body,html {
     text-align: center;
     display:inline-block;
     transition: 0.6s all;
+    background-color:transparent;
 }
 
-.side-bar ul li a:hover{
+.side-bar ul li .sideBtn:hover{
     background:blue;
 
 }
+
 .mysearch{
     padding: 10px;
 }
@@ -184,8 +188,29 @@ body,html {
 .video-area{
 margin:20px;
 }
+.vidbtn{
+    margin:10px;
+}
 
+.editorArea{
+    display:hidden;
+}
 
+/* Reddit CSS */
+
+.redditCard{
+    margin:10px;
+}
+
+.card-header{
+    background-color:#f5a148;
+}
+
+.card-footer{
+    background-color:#f5a148;
+}
+
+/* Code Editor */
 
 #editor {
     width: 100%;
@@ -201,4 +226,71 @@ margin:20px;
 #codeDiv {
     display:none;
     width:100%;
+}
+
+/* Login Page */
+.loginH{
+    font-size: 50px;
+    color:white;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.loginBox{
+    background: rgba(0,0,0,0.8);
+    margin-top:40px;
+    color:white;
+}
+
+.label{
+    font-size: 20px;
+    font-weight: normal;
+}
+.input-group{
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.input-group-addon{
+    background:transparent;
+    border-radius: 0px;
+    border:0px;
+    border-bottom: 1px solid white;
+    font-size: 18px;
+    color:gray;
+}
+
+.form-control{
+    background:transparent;
+    border-radius: 0px;
+    border:0px;
+    border-bottom: 1px solid white;
+    padding:15px;
+    color:white;
+    font-size:21px;
+}
+
+input [type="checkbox"]{
+    height:15px;
+    width:15px;
+}
+
+small {
+    font-size: 18px;
+    color:white;
+}
+
+.btn-default{
+    border-radius: 0px;
+    width:100%;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom:30px;
+    background: blue;
+    color:white;
+}
+
+.signBox{
+    font-size: 30px;
+    color:white;
 }

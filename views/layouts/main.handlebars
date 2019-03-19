@@ -19,12 +19,12 @@
   <div class="mainPage">
     <div class="side-bar">
       <ul>
-        <li><a class="icon ion-md-person sideBtn" value="profile" href="#"></a></li>
-        <li><a class="icon ion-logo-youtube sideBtn" value="youtube" href="#"></a></li>
-        <li><a class="icon ion-logo-reddit sideBtn" value="reddit" href="#"></a></li>
-        <li><a class="icon ion-logo-codepen sideBtn" value="codepen" href="#"></a></li>
-        <li><a class="icon ion-logo-slack sideBtn" value="slack" href="#"></a></li>
-        <li><a class="icon ion-md-bookmark sideBtn" value="faves" href="#"></a></li>
+        <li><button class="icon ion-md-person sideBtn" value="profile"></button></li>
+        <li><button class="icon ion-logo-youtube sideBtn" value="youtube"></button></li>
+        <li><button class="icon ion-logo-reddit sideBtn" value="reddit"></button></li>
+        <li><button class="icon ion-md-create sideBtn" value="code"></button></li>
+        <li><button class="icon ion-logo-slack sideBtn" value="slack"></button></li>
+        <li><button class="icon ion-md-bookmark sideBtn" value="faves"></button></li>
       </ul>
     </div>
     <div class="btn2"></div>
@@ -55,8 +55,9 @@
           location.replace("/youtube?search=" + searchQuery);
           break;
         case "reddit":
+          location.replace("/reddit?search=" + searchQuery);
           break;
-        case "codepen":
+        case "code":
           break;
         case "slack":
           break;
@@ -84,18 +85,16 @@
       location.replace("/video?id=" + idVideo);
     });
 
-    $(".goBack").on("click", function (event) {
+    $("#goBack").on("click", function (event) {
       event.preventDefault();
       var searchQuery = sessionStorage.getItem("search");
       location.replace("/youtube?search=" + searchQuery);
     });
 
-    $(".codeIt").on("click", function () {
+    $("#codeIt").on("click", function () {
       $("#codeDiv").toggle()
     })
-
     let editor = $("#editor")
-
     function update() {
       var idoc = document.getElementById('iframe').contentWindow.document;
       idoc.open();
@@ -108,34 +107,27 @@
       editor.getSession().setMode("ace/mode/html");
       editor.setValue(`<!DOCTYPE html>
 <html>
-
 <head>
 </head>
-
 <body>
 </body>
-
 </html>`, 1); //1 = moves cursor to end
-
       editor.getSession().on('change', function () {
         update();
       });
-
       editor.focus();
-
-
       editor.setOptions({
         fontSize: "16pt",
         showLineNumbers: false,
         showGutter: false,
         vScrollBarAlwaysVisible: true,
       });
-
       editor.setShowPrintMargin(false);
       editor.setBehavioursEnabled(true);
     }
-
     setupEditor()
+
+
 
   </script>
 </body>
