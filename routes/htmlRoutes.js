@@ -18,6 +18,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/editor", function(req,res){
+    res.render("editor");
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

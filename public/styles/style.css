@@ -5,7 +5,8 @@ body,html {
     font-family: sans-serif;
     background:url(../styles/bg01.jpg) no-repeat;
     background-size:cover;
-    overflow-x: hidden;
+
+
 }
 
 /* Landin Page Css */
@@ -209,27 +210,56 @@ margin:20px;
     background-color:#f5a148;
 }
 
-/* Code Editor */
+/*Mini Code Editor */
 
-#editor {
+.editorMini {
     width: 100%;
     padding: 25%;
     float: left;
-    height: 240px;
 }
 
-#iframe {
+.iframeMini {
     width:30%;
     background-color:white;
     float:left;
-    height: 240px;
+    height:500px
 }
-#codeDiv {
+.codeDivMini {
     display:none;
     width:100%;
 }
 
+/* Large Code Editor */
+#editor {
+    width: 100%;
+    padding: 25%;
+    height:500px;
+    border-style:outset;
+   
+}
+
+#iframe {
+    width:100%;
+    background-color:white;
+    height:500px;
+    border-style:outset;
+  
+}
+#codeDiv {
+    
+    width:100%;
+}
+
+.editorText{
+    color:rgb(56, 181, 223);
+    text-align:center;
+    font-weight: bold;
+}
+.editorContainer{
+    background: rgba(0,0,0,0.8);
+}
 /* Login Page */
+
 .loginH{
     font-size: 50px;
     color:white;
@@ -305,4 +335,92 @@ form .icon {
 #warning {
     display: none;
     color: red;
+}
+
+/* Stack CSS */
+
+.stackCard{
+    background:blue;
+}
+.media{
+    background:rgb(56, 181, 223);
+}
+
+/* User Profile CSS */
+
+.user-card .user-header{
+    background: url("userheader.jpg");
+    background-size: cover;
+    height:200px;
+}
+
+.user-card .profile-pic{
+    position:relative;
+    top:-50px;
+    margin-bottom:-50px;
+}
+
+.user-card .profile-pic img{
+    width:100px;
+    height:100px;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    border:5px solid rgba(255,255,255,0.5);
+}
+
+.user-card{
+    background-color: lightblue;
+}
+.user-data{
+    padding:5%;
+}
+
+.user-info h2{
+    margin:0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-info h3{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.user-info p{
+    width:90%;
+    margin:auto;
+    text-align: justify;
+    margin-bottom: 10%;
+}
+
+.user-faves a{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    margin: 0 3px;
+    padding: 10px;
+    display:inline-block;
+    border-radius: 50%;
+}
+
+.user-faves a i{
+    color: #fff;
+}
+
+.color1{
+    background:red;
+}
+
+.color2{
+    background:green;
+}
+.color3{
+    background: purple;
+}
+.color4{
+    background:orange;
+}
+.icon{
+    font-size:30px;
 }
