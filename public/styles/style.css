@@ -5,8 +5,7 @@ body,html {
     font-family: sans-serif;
     background:url(../styles/bg01.jpg) no-repeat;
     background-size:cover;
-
-
+    overflow-x: hidden;
 }
 
 /* Landin Page Css */
@@ -260,7 +259,7 @@ margin:20px;
     color:gray;
 }
 
-.form-control{
+.form-control, .form-control:focus{
     background:transparent;
     border-radius: 0px;
     border:0px;
@@ -293,4 +292,13 @@ small {
 .signBox{
     font-size: 30px;
     color:white;
+}
+
+form .icon {
+    font-size: 36px;
+}
+
+#warning {
+    display: none;
+    color: red;
 }

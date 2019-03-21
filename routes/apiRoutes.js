@@ -1,14 +1,7 @@
 var db = require("../models");
 var axios = require("axios");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
+module.exports = function(app, passport) {
   app.get("/video", function(req,res){
 
    var embedID = req.query;
@@ -79,43 +72,51 @@ module.exports = function(app) {
     });
   }); 
 
-  app.post("/api/user", function(req, res) {
-    if (!req.body.username || req.body.username.length < 5) {
-      return res.json({"error": "Username should be at least 5 characters long"});
-    };
-    if (!req.body.password || req.body.password.length < 8) {
-      return res.json({"error": "Password should be at least 8 characters long"});
-    };
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(req.body.password, salt).then(function(hash) {
-          // Store hash in your password DB.
-          var userInfo = {
-            username: req.body.username,
-            password: hash
-          }
-          db.User.create(userInfo).then(function(data) {
-            res.json(data);
-          }).catch(function(err) {
-            console.log("Sequelize Error Occurred: " + err);
-          });
-      }).catch(function(err) {
-        console.log("Hash Error Occurred: " + err);
-      });;
-  });
+  // If the user has valid login credentials, send them to the members page.
+  // Otherwise the user will be sent an error
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    console.log(req);
+    res.json("/");
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // otherwise send back an error
+  app.post("/api/signup", function(req, res) {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      username: req.body.username
+    }).then(function() {
+      res.redirect(307, "/api/login");
+    }).catch(function(err) {
+      console.log("Authentication Error Occurred: " + err);
+      res.json(err);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
+  // Route for logging user out
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+  // Route for getting some data about our user to be used client side
+  app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    }
+    else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      console.log(req.user);
+      res.json({
+        email: req.user.email,
+        id: req.user.id,
+        username: req.user.username
+      });
+    }
   });
 };
 
