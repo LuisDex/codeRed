@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/styles/style.css" media="screen" title="no title" charset="utf-8">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js"></script>
-  {{!-- <script src="./js/main.js"></script> --}}
   <title>Home Page</title>
 </head>
 
@@ -23,32 +22,9 @@
     $(".search-box").on("submit", function (event) {
       event.preventDefault();
       searchQuery = $("#searchMain").val().trim();
+      if (searchQuery === "") return false;
       sessionStorage.setItem("search", searchQuery);
       location.replace("/youtube?search=" + searchQuery);
-    });
-
-    $(".sideBtn").on("click", function (event) {
-      event.preventDefault();
-      var sideValue = $(this).val();
-      console.log(sideValue);
-      var searchQuery = sessionStorage.getItem("search");
-
-      switch (sideValue) {
-        case "profile":
-          break;
-        case "youtube":
-          console.log(searchQuery);
-          location.replace("/youtube?search=" + searchQuery);
-          break;
-        case "reddit":
-          break;
-        case "codepen":
-          break;
-        case "slack":
-          break;
-        case "faves":
-          break;
-      }
     });
 
     $(".btn2").on("click", function () {
@@ -62,57 +38,6 @@
       sessionStorage.setItem("search", searchQuery);
       location.replace("/youtube?search=" + searchQuery);
     });
-
-    $(".viewBtn").on("click", function (event) {
-      event.preventDefault();
-      var idVideo = $(this).val();
-      console.log($(this).val());
-      location.replace("/video?id=" + idVideo);
-    });
-
-    $("#goBack").on("click", function (event) {
-      event.preventDefault();
-      var searchQuery = sessionStorage.getItem("search");
-      location.replace("/youtube?search=" + searchQuery);
-    });
-
-    $("#codeIt").on("click", function () {
-      $("#codeDiv").toggle()
-    })
-    let editor = $("#editor")
-    function update() {
-      var idoc = document.getElementById('iframe').contentWindow.document;
-      idoc.open();
-      idoc.write(editor.getValue());
-      idoc.close();
-    }
-    function setupEditor() {
-      editor = ace.edit("editor");
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/html");
-      editor.setValue(`<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-</body>
-</html>`, 1); //1 = moves cursor to end
-      editor.getSession().on('change', function () {
-        update();
-      });
-      editor.focus();
-      editor.setOptions({
-        fontSize: "16pt",
-        showLineNumbers: false,
-        showGutter: false,
-        vScrollBarAlwaysVisible: true,
-      });
-      editor.setShowPrintMargin(false);
-      editor.setBehavioursEnabled(true);
-    }
-    setupEditor()
-
-
 
   </script>
 </body>
