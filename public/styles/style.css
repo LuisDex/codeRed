@@ -216,12 +216,14 @@ margin:20px;
     width: 100%;
     padding: 25%;
     float: left;
+    height: 240px;
 }
 
 #iframe {
     width:30%;
     background-color:white;
     float:left;
+    height: 240px;
 }
 #codeDiv {
     display:none;
