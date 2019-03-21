@@ -1,6 +1,7 @@
 <div class="row justify-content-md-center">
-    <form class="col-md-5 loginBox signup">
+    <form class="col-md-5 loginBox signup" autocomplete="off">
              <h2 class="text-center signBox">Sign Up</h2>
+             <p id="warning">Incorrect Login Credentials</p>
              <label class="label control-label">Username</label>
              <div class="input-group">
                 <span class="input-group-addon"><span class="icon ion-md-person"></span></span>
@@ -19,7 +20,7 @@
              <label class="label control-label">Retype Password</label>
              <div class="input-group">
                 <span class="input-group-addon"><span class="icon ion-md-lock"></span></span>
-                <input type="password" class="form-control" name="retype password" placeholder="Retype Password">
+                <input id="password-confirm-input" type="password" class="form-control" name="retype-password" placeholder="Retype Password">
              </div>
              <button type="submit" class="btn btn-default">Sign Up</button>
             </form>

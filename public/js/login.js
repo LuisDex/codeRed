@@ -22,7 +22,8 @@ $(document).ready(function() {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
-    $("button[type='submit'").attr("disabled", true);
+    $("button[type='submit']").attr("disabled", true);
+    $("button[type='submit']").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Logging In...`)
     $.post("/api/login", {
       email: email,
       password: password
@@ -31,12 +32,13 @@ $(document).ready(function() {
         window.location.replace(data);
       })
       .catch(function(err) {
-        // If there's an error, log the error
         $("#warning").fadeIn(500, function() {
           setTimeout(() => {
             $("button[type='submit'").attr("disabled", false);
+            $("button[type='submit']").html("Log In");
           }, 250);
         });
+        // If there's an error, log the error
         console.log(err);
       });
   }

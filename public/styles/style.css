@@ -267,6 +267,8 @@ margin:20px;
     padding:15px;
     color:white;
     font-size:21px;
+    outline: none;
+    box-shadow: none;
 }
 
 input [type="checkbox"]{
