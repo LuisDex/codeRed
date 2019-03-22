@@ -1,81 +1,51 @@
 var db = require("../models");
-var axios = require("axios");
 
 module.exports = function(app, passport) {
-  app.get("/video", function(req,res){
-
-   var embedID = req.query;
-   console.log(embedID);
-   res.render("video",embedID)
-  });
-
-  app.get("/reddit", function(req, res){
-    if (!req.query || !req.query.search) return res.status(404).end();
-    var queryURL = "https://www.reddit.com/r/coding/search.json?q=" + req.query.search;
-    axios({
-        url: queryURL,
-        method: "GET",
-        data: {
-  
-            restrict_sr: "true"
-        }
-      }).then(function(response) {
-          var children = response.data.data.children;
-
-          if(children.length > 10)
-          {
-           children = children.slice(0,10);
-          }
-          res.render("reddit",{items:children});
+  // Allowing users to update their profile information
+  app.put("/api/users/:id", function(req, res) {
+    // Making sure the user is the account owner
+    if (req.params.id != req.user.id) {
+      return res.status(500).end();
+    }
+    // Limiting amount of information that may be changed
+    var updatedInfo = {};
+    if (req.body.displayName) {
+      updatedInfo.displayName = req.body.displayName;
+    }
+    if (req.body.blurb) {
+      updatedInfo.blurb = req.body.blurb;
+    }
+    db.User.update(updatedInfo, { where: { id: req.params.id } })
+      .then(function() {
+        res.status(200).end();
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.status(500).end();
       });
   });
 
-  app.get("/stackoverflow", function(req, res) {
-    if (!req.query || !req.query.search) return res.status(404).end();
-    let url = "http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&site=stackoverflow&key=";
-    url += "bbiQ0G37kJkUnY2bDcjyyQ((";
-    url += "&q=" + req.query.search;
-    axios.get(url)
-    .then(function(resp) {
-      var items = resp.data.items;
-      res.render("stackoverflow", {
-        items : items
-      })
+  // Storing material into the users' favorites
+  app.post("/api/favorite", function(req, res) {
+    db.Favorite.create({
+      type: req.body.type,
+      title: req.body.title,
+      score: req.body.score,
+      url: req.body.url,
+      UserId: req.user.id
     })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).end();
-    });
-  }); 
-
-  // Grabbing youtube search results
-  app.get("/youtube", function(req, res) {
-    if (!req.query || !req.query.search) return res.status(404).end();
-    let url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
-    url += "&maxResults=8";
-    url += "&q=" + req.query.search.replace(" ","+");
-
-    // Making sure the search is code related
-    if (req.query.search.toLowerCase().indexOf("coding") === -1) url += "+coding";
-
-    url += "&key=AIzaSyDru7LuP-KoZeYSJjNssMn-Jmf2cKODnMw";
-    axios.get(url)
-    .then(function(resp) {
-      var items = resp.data.items;
-      res.render("youtube", {
-        items : items
+      .then(function() {
+        res.status(200).end();
       })
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).end();
-    });
-  }); 
+      .catch(function(err) {
+        console.log(err);
+        res.status(500).end();
+      });
+  });
 
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    console.log(req);
     res.json("/");
   });
 
@@ -87,12 +57,14 @@ module.exports = function(app, passport) {
       email: req.body.email,
       password: req.body.password,
       username: req.body.username
-    }).then(function() {
-      res.redirect(307, "/api/login");
-    }).catch(function(err) {
-      console.log("Authentication Error Occurred: " + err);
-      res.json(err);
-    });
+    })
+      .then(function() {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err) {
+        console.log("Authentication Error Occurred: " + err);
+        res.json(err);
+      });
   });
 
   // Route for logging user out
@@ -106,8 +78,7 @@ module.exports = function(app, passport) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
-    }
-    else {
+    } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       console.log(req.user);
@@ -119,4 +90,3 @@ module.exports = function(app, passport) {
     }
   });
 };
-

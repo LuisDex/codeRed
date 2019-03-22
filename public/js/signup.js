@@ -30,7 +30,7 @@ $(document).ready(function() {
   // Otherwise we log any errors
   function signUpUser(email, password, username) {
     $("button[type='submit']").attr("disabled", true);
-    $("button[type='submit']").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Registering...`)
+    $("button[type='submit']").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Registering...`)
     $.post("/api/signup", {
       email: email,
       password: password,
