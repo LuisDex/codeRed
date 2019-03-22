@@ -114,7 +114,7 @@ body,html {
 
 
 /* Main Page Css */
-.side-bar{
+.side-bar {
     float:left;
     width:100px;
     height:100%;
@@ -124,20 +124,20 @@ body,html {
     transition: 0.8s all;
 }
 
-.side{
+.side {
     margin-left:0px;
 }
-.side-bar ul{
+.side-bar ul {
     margin:0;
     padding:0;
 }
 
-.side-bar ul li{
+.side-bar ul li {
     list-style: none;
 
 }
 
-.side-bar ul li .sideBtn{
+.side-bar ul li .sideBtn {
     text-decoration: none;
     color:white;
     height:80px;
@@ -150,15 +150,15 @@ body,html {
     background-color:transparent;
 }
 
-.side-bar ul li .sideBtn:hover{
+.side-bar ul li .sideBtn:hover {
     background:blue;
 
 }
 
-.mysearch{
+.mysearch {
     padding: 10px;
 }
-.btn2{
+.btn2 {
     float:left;
     padding: 0 10px;
     font-size: 40px;
@@ -168,15 +168,15 @@ body,html {
     cursor: pointer;
 }
 
-.btn2::before{
+.btn2::before {
   content:'\f32a';
 }
 
-.btnc::before{
+.btnc::before {
   content:'\f2c0';
 }
 
-.tubeCard{
+.tubeCard {
     margin: 10px;
     background:#f5a148;
     padding:5px;
@@ -185,28 +185,28 @@ body,html {
 
 /* Video Css */
 
-.video-area{
+.video-area {
 margin:20px;
 }
-.vidbtn{
+.vidbtn {
     margin:10px;
 }
 
-.editorArea{
+.editorArea {
     display:hidden;
 }
 
 /* Reddit CSS */
 
-.redditCard{
+.redditCard {
     margin:10px;
 }
 
-.card-header{
+.card-header {
     background-color:#f5a148;
 }
 
-.card-footer{
+.card-footer {
     background-color:#f5a148;
 }
 
@@ -250,53 +250,59 @@ margin:20px;
     width:100%;
 }
 
-.editorText{
+.editorText {
     color:rgb(56, 181, 223);
     text-align:center;
     font-weight: bold;
 }
-.editorContainer{
+.editorContainer {
     background: rgba(0,0,0,0.8);
 }
 /* Login Page */
 
-.loginH{
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.loginH {
     font-size: 50px;
     color:white;
-    margin-top: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
-.loginBox{
-    background: rgba(0,0,0,0.8);
-    margin-top:40px;
+.loginBox {
+    padding: 10px;
     color:white;
-    box-shadow: 2px 0 17px 5px white;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0 0 17px 5px white;
 }
 
-.label{
+.label {
     font-size: 20px;
     font-weight: normal;
 }
-.input-group{
+.input-group {
     margin-top:10px;
     margin-bottom:20px;
+    border-bottom: 1px solid white;
 }
 
-.input-group-addon{
+.input-group-addon {
     background:transparent;
     border-radius: 0px;
     border:0px;
-    border-bottom: 1px solid white;
     font-size: 18px;
     color:gray;
 }
 
-.form-control, .form-control:focus{
+.form-control, .form-control:focus {
     background:transparent;
     border-radius: 0px;
     border:0px;
-    border-bottom: 1px solid white;
     padding:15px;
     color:white;
     font-size:21px;
@@ -304,7 +310,7 @@ margin:20px;
     box-shadow: none;
 }
 
-input [type="checkbox"]{
+input [type="checkbox"] {
     height:15px;
     width:15px;
 }
@@ -314,7 +320,7 @@ small {
     color:white;
 }
 
-.btn-default{
+.btn-default {
     border-radius: 0px;
     width:100%;
     font-size: 20px;
@@ -324,13 +330,9 @@ small {
     color:white;
 }
 
-.signBox{
+.signBox {
     font-size: 30px;
     color:white;
-}
-
-form .icon {
-    font-size: 36px;
 }
 
 #warning {
@@ -340,28 +342,28 @@ form .icon {
 
 /* Stack CSS */
 
-.stackCard{
+.stackCard {
     background:blue;
 }
-.media{
+.media {
     background:rgb(56, 181, 223);
 }
 
 /* User Profile CSS */
 
-.user-card .user-header{
+.user-card .user-header {
     background: url("userheader.jpg");
     background-size: cover;
     height:200px;
 }
 
-.user-card .profile-pic{
+.user-card .profile-pic {
     position:relative;
     top:-50px;
     margin-bottom:-50px;
 }
 
-.user-card .profile-pic img{
+.user-card .profile-pic img {
     width:100px;
     height:100px;
     max-width: 100px;
@@ -370,10 +372,10 @@ form .icon {
     border:5px solid rgba(255,255,255,0.5);
 }
 
-.user-card{
+.user-card {
     background-color: lightblue;
 }
-.user-data{
+.user-data {
     padding:5%;
 }
 
