@@ -1,5 +1,3 @@
-# Project2
-Central Repository for the Second Project in the UCF Coding Bootcamp
 ![facebook_cover_photo_1](https://user-images.githubusercontent.com/44531143/54729239-be189c80-4b58-11e9-82c1-bb9ac2e2d28a.png)
 
 <h2>Have trouble getting coding? Search for some helpful topics!</h2>
