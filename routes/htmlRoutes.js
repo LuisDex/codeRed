@@ -93,6 +93,30 @@ module.exports = function(app) {
     });
   }); 
 
+  // Used for rendering users' profile pages
+  app.get("/users/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id } }).then(function(data) {
+      var user_info = {
+        displayName: data.displayName,
+        username: data.username,
+        blurb: data.blurb,
+        myAccount: (req.params.id == data.id)
+      }
+      res.render("users", {
+        info: user_info
+      });
+    });
+  });
+
+  // Rendering a user's favorites
+  app.get("/users/:id/favorites", function(req, res) {
+    db.Favorite.findAll({ where: { UserId: req.params.id } }).then(function(data) {
+      res.render("favorites", {
+        items: data
+      });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
