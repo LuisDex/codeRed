@@ -110,7 +110,8 @@
     })
     let editor = $("#editor")
     function update() {
-      var idoc = document.getElementById('iframe').contentWindow.document;
+      var idoc = document.getElementById('iframe') || document.getElementById('iframeMini');
+      idoc = idoc.contentWindow.document
       idoc.open();
       idoc.write(editor.getValue());
       idoc.close();
@@ -122,8 +123,10 @@
       editor.setValue(`<!DOCTYPE html>
 <html>
 <head>
+
 </head>
 <body>
+
 </body>
 </html>`, 1); //1 = moves cursor to end
       editor.getSession().on('change', function () {
