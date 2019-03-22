@@ -23,7 +23,7 @@
         <li><button class="icon ion-logo-youtube sideBtn" value="youtube"></button></li>
         <li><button class="icon ion-logo-reddit sideBtn" value="reddit"></button></li>
         <li><button class="icon ion-md-create sideBtn" value="code"></button></li>
-        <li><button class="icon ion-logo-slack sideBtn" value="slack"></button></li>
+        <li><button class="icon ion-md-filing sideBtn" value="stack"></button></li>
         <li><button class="icon ion-md-bookmark sideBtn" value="faves"></button></li>
       </ul>
     </div>
@@ -58,8 +58,10 @@
           location.replace("/reddit?search=" + searchQuery);
           break;
         case "code":
+          location.replace("/editor");
           break;
-        case "slack":
+        case "stack":
+        location.replace("/stackoverflow?search=" + searchQuery);
           break;
         case "faves":
           break;
@@ -70,6 +72,18 @@
       $(".btn2").toggleClass("btnc");
       $(".side-bar").toggleClass("side");
     });
+    
+    function stringContainsImg(str)
+    {
+      var checkString = str;
+
+      if(checkString.contains(".jpg") || checkString.contains(".png"))
+      {
+        return true;
+      }else{
+        return false;
+      }
+    };
 
     $(".searchbtn").on("click", function (event) {
       event.preventDefault();

@@ -1,0 +1,25 @@
+{{#each items}}
+<div class="col-sm-6 offset-sm-3">
+<div class="card">
+<div class="media">
+    <img class="align-self-start mr-3" src="{{owner.profile_image}}" alt="Poster Image">
+    <div class="media-body">
+    <div class="card-header">
+        <h5 class="mt-0">{{title}}</h5>
+        </div>
+        <div class="card-body stackCard">
+        <p>Username: {{owner.display_name}}</p>
+        <p>Tags: {{tags}}</p>
+        <p>Score: {{score}} </p>
+        {{#if is_answered}}
+        <p>Was it answered? => Yes</p>
+        {{else}}
+        <p>Was it answered? => No</p>
+        {{/if}}
+        <a href="{{link}}" target="_blank">{{link}}</a>
+       </div>
+    </div> 
+</div>
+</div>
+</div>
+{{/each}}
