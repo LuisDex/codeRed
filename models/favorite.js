@@ -15,6 +15,10 @@ module.exports = function(sequelize, DataTypes) {
     score: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   });
 

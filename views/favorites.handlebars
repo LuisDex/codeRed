@@ -10,52 +10,52 @@
         <li class="nav-item">
           <a class="nav-link" id="stack-tab" data-toggle="tab" href="#stack" role="tab" aria-controls="stack" aria-selected="false">StackOverflow</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" id="code-tab" data-toggle="tab" href="#code" role="tab" aria-controls="code" aria-selected="false">Code Snips</a>
-        </li>
+        </li> -->
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="youtube" role="tabpanel" aria-labelledby="youtube-tab">
-            <!-- <div class="card-group allvideos">
+            <div class="card-group allvideos">
                 {{#each items}}
+                {{#if this.youtube}}
                 <div class="col-xs-2">
                 <div class="card tubeCard" style="width: 18rem;">
-                  <img class="card-img-top" src="{{snippet.thumbnails.high.url}}" alt="{{snippet.title}}">
+                  <img class="card-img-top" src="https://img.youtube.com/vi/{{videoId}}/hqdefault.jpg" alt="{{title}}">
                   <div class="card-body">
-                    <h5 class="card-title">{{snippet.title}}</h5>
-                    <p class="card-text">{{snippet.description}}</p>
-                    <button class="btn btn-primary viewBtn" value="{{id.videoId}}">View Video</button>
-                    <button class="btn btn-primary faveIt" value="{{id.videoId}}">Favorite</button>
+                    <h5 class="card-title">{{title}}</h5>
+                    <button class="btn btn-primary viewBtn" value="{{videoId}}">View Video</button>
                   </div>
                 </div>
                 </div>
+                {{/if}}
                 {{/each}}
-                </div> -->
+                </div>
         </div>
         <div class="tab-pane fade" id="reddit" role="tabpanel" aria-labelledby="reddit-tab">
-            <!-- {{#each items}}
-
+            {{#each items}}
+            {{#if this.reddit}}
             <div class="col-sm-6 offset-sm-3">
                 <div class="card text-center redditCard">
-                    <div class="card-header">
-                        <strong>Posted by:</strong> {{data.author}}
-                    </div>
+                    {{!-- <div class="card-header">
+                        <strong>Posted by:</strong> {{author}}
+                    </div> --}}
                     <div class="card-body">
-                        <u><h5 class="card-title">{{data.title}}</h5></u>
-                        <a href="{{data.url}}" target="_blank" class="card-text">{{data.url}}</a>
+                        <u><h5 class="card-title">{{this.title}}</h5></u>
+                        <a href="{{url}}" target="_blank" class="card-text">{{url}}</a>
                     </div>
                     <div class="card-footer">
-                        <strong>Upvotes:</strong>{{data.score}}
-                        <button class="btn btn-primary saveIt">Save to Faves</button>
+                        <strong>Upvotes:</strong>{{score}}
                     </div>
                 </div>
             </div>
-            
-            {{/each}} -->
+            {{/if}}
+            {{/each}}
 
         </div>
         <div class="tab-pane fade" id="stack" role="tabpanel" aria-labelledby="stack-tab">
-            <!-- {{#each items}}
+            {{#each items}}
+            {{#if this.stack}}
             <div class="col-sm-6 offset-sm-3">
             <div class="card">
             <div class="media">
@@ -65,23 +65,17 @@
                     <h5 class="mt-0">{{title}}</h5>
                     </div>
                     <div class="card-body stackCard">
-                    <p>Username: {{owner.display_name}}</p>
-                    <p>Tags: {{tags}}</p>
                     <p>Score: {{score}} </p>
-                    {{#if is_answered}}
-                    <p>Was it answered? => Yes</p>
-                    {{else}}
-                    <p>Was it answered? => No</p>
-                    {{/if}}
-                    <a href="{{link}}" target="_blank">{{link}}</a>
+                    <a href="{{url}}" target="_blank">{{url}}</a>
                    </div>
                 </div> 
             </div>
             </div>
             </div>
-            {{/each}} -->
+            {{/if}}
+            {{/each}}
         </div>
-        <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">Code Snippets</div>
+        <!-- <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">Code Snippets</div> -->
       </div>
 </div>
 </div>
