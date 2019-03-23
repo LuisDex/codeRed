@@ -50,13 +50,23 @@
 
       switch (sideValue) {
         case "profile":
-          $.get("/api/user_data",function(data)
-          {
-            location.replace("/users/" + data.id);
-          });
+        $.get("/api/user_data",function(data)
+        {
+          location.replace("/users/" + data.id);
+        });
+        
+          break;
+        case "youtube":
+          location.replace("/youtube?search=" + searchQuery);
+          break;
+        case "reddit":
+          location.replace("/reddit?search=" + searchQuery);
           break;
         case "code":
           location.replace("/editor");
+          break;
+        case "stack":
+        location.replace("/stackoverflow?search=" + searchQuery);
           break;
         case "faves":
         $.get("/api/user_data",function(data)
