@@ -1,15 +1,23 @@
+<div class="container titleContainer">
+<h1 class="titleText"><u>YouTube Video Results</u></h1>
+<p class="titleText">Scroll through the different results from YouTube Below</p>
+<p class="titleText">To view a specific video, click on the "View Video" button.</p>
+<p class="titleText">To save a particular video, click on the "Favorites" button.</p>
+</div>
+<div class="col-sm-8 offset-sm-2">
 <div class="card-group allvideos">
 {{#each items}}
-<div class="col-xs-2">
+<div class="col-xs-4">
 <div class="card tubeCard" style="width: 18rem;">
   <img class="card-img-top" src="{{snippet.thumbnails.high.url}}" alt="{{snippet.title}}">
   <div class="card-body">
-    <h5 class="card-title">{{snippet.title}}</h5>
-    <p class="card-text">{{snippet.description}}</p>
+    <h5 class="card-title" id="dataTitle">{{snippet.title}}</h5>
+    <p class="card-text" id="description">{{snippet.description}}</p>
     <button class="btn btn-primary viewBtn" value="{{id.videoId}}">View Video</button>
-    <button class="btn btn-primary faveIt" value="{{id.videoId}}">Favorite</button>
+    <button class="btn btn-primary faveIt" value="{{id.videoId}}" >Favorites</button>
   </div>
 </div>
 </div>
 {{/each}}
+</div>
 </div>

@@ -105,8 +105,7 @@ body,html {
         color:white;
     }
     .page-content h1{
-        color:rgb(56, 181, 223);
-        text-transform: uppercase;
+        color:red;
         font-size: 50px;
         font-weight: 900;
         margin-bottom: 20px;
@@ -250,12 +249,12 @@ margin:20px;
     width:100%;
 }
 
-.editorText{
+.titleText{
     color:rgb(56, 181, 223);
     text-align:center;
     font-weight: bold;
 }
-.editorContainer{
+.titleContainer{
     background: rgba(0,0,0,0.8);
 }
 /* Login Page */
@@ -338,14 +337,30 @@ form .icon {
     color: red;
 }
 
+.logo{
+    width:100%;
+    height:250px;
+    background: rgba(0,0,0,0.8);
+
+}
+
+.logocol{
+    padding:0;
+    margin:0;
+}
+
 /* Stack CSS */
 
 .stackCard{
-    background:blue;
+    background: white;
+    margin:15px;
 }
-.media{
-    background:rgb(56, 181, 223);
+.postImg{
+    height:200px;
+    width:200px;
+    margin:5px;
 }
+
 
 /* User Profile CSS */
 

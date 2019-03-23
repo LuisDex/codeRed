@@ -1,3 +1,10 @@
+<div class="container titleContainer">
+<h1 class="titleText"><u>Reddit Results</u></h1>
+<p class="titleText">Below you can find some Reddit Articles related to your search result.</p>
+<p class="titleText">Click on the article link to go straight to the article.</p>
+<p class="titleText">To save the article for later viewing, click the "Save to Faves" button.</p>
+</div>
+
 {{#each items}}
 
 <div class="col-sm-6 offset-sm-3">
@@ -6,12 +13,12 @@
             <strong>Posted by:</strong> {{data.author}}
         </div>
         <div class="card-body">
-            <u><h5 class="card-title">{{data.title}}</h5></u>
+            <u><h5 class="card-title dataTitle">{{data.title}}</h5></u>
             <a href="{{data.url}}" target="_blank" class="card-text">{{data.url}}</a>
         </div>
         <div class="card-footer">
             <strong>Upvotes:</strong>{{data.score}}
-            <button class="btn btn-primary saveIt">Save to Faves</button>
+            <button class="btn btn-primary faveIt" value="">Save to Faves</button>
         </div>
     </div>
 </div>

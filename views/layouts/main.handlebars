@@ -11,7 +11,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.3/ace.js"></script>
   {{!-- <script src="./js/main.js"></script> --}}
-  <title>Home Page</title>
+  <title>codeRed</title>
 </head>
 
 <body>
@@ -44,14 +44,17 @@
     $(".sideBtn").on("click", function (event) {
       event.preventDefault();
       var sideValue = $(this).val();
-      console.log(sideValue);
       var searchQuery = sessionStorage.getItem("search");
 
       switch (sideValue) {
         case "profile":
+        $.get("/api/user_data",function(data)
+        {
+          location.replace("/users/" + data.id);
+        });
+        
           break;
         case "youtube":
-          console.log(searchQuery);
           location.replace("/youtube?search=" + searchQuery);
           break;
         case "reddit":
@@ -64,6 +67,11 @@
         location.replace("/stackoverflow?search=" + searchQuery);
           break;
         case "faves":
+        $.get("/api/user_data",function(data)
+        {
+          location.replace("/users/" + data.id +"/favorites");
+        });
+        
           break;
       }
     });
@@ -92,6 +100,15 @@
       location.replace("/youtube?search=" + searchQuery);
     });
 
+    $(".faveIt").on("click",function(event){
+     
+     var vidID = $(this).val();
+     faveTitle = $(".dataTitle").text();
+     console.log(vidID);
+     console.log(faveTitle);
+
+    });
+
     $(".viewBtn").on("click", function (event) {
       event.preventDefault();
       var idVideo = $(this).val();
@@ -105,6 +122,9 @@
       location.replace("/youtube?search=" + searchQuery);
     });
 
+    $(".faveIt").on("click",function(event){
+
+    })
     $("#codeIt").on("click", function () {
       $("#codeDiv").toggle()
     })
