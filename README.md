@@ -1,39 +1,55 @@
+
 ![facebook_cover_photo_1](https://user-images.githubusercontent.com/44531143/54729239-be189c80-4b58-11e9-82c1-bb9ac2e2d28a.png)
 
-<h2>Have trouble getting coding? Search for some helpful topics!</h2>
+<h1>Overview</h1>
+<h3>Have trouble understanding coding? Wondering... "Why won't my code work? or "Why does it work that way but not this way?" codeRed is a web based app that is a one stop coding/programming resource. Users can search through Youtube, Reddit and Stack Overflow to answer any questions they have in regards to coding. Users are also able to code on the website using our code editor. Users can save videos from Youtube and answers to questions from Reddit and Stack Overflow as their favorites. Happy coding!</h3>
 
-<h2>Getting Started</h2>
-<ol>
-<li>Clone this repo to your desktop and run npm install to install all the dependencies.</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ol>
+<h1>So how does this work?</h1>
 
-A step by step series of examples that tell you how to get a development env running
+<h3>Log in to your account.</h3>
 
-Search the site for what you need help with:
+![signin](https://user-images.githubusercontent.com/44531143/54861021-0e2e6500-4cf9-11e9-9762-2c12c1e930bf.png)
 
-![youtube](https://user-images.githubusercontent.com/44531143/54789620-7bfb6380-4c09-11e9-8041-f948e1b2d62f.gif)
+<h3>If you don't have an account, create one!</h3>
+
+![signup](https://user-images.githubusercontent.com/44531143/54861046-5d749580-4cf9-11e9-9c8d-3cabe1d1b598.png)
+
+<h3>Once you logged in, search the site for what you need help with:</h3>
+
+![youtube](https://user-images.githubusercontent.com/44531143/54861287-20aa9d80-4cfd-11e9-8ca3-30eb4f79538d.gif)
 
 <li>The website displays youtube videos relevant to what you searched.</li>
-<li>Pick the video you want to view and code while you watch the video</li>
+<li>Pick the video you want to view and code while you watch the video.</li>
 
-Not feeling Youtube or want to check out a different form of media?
-<li>Hover over to our side menu and check out our options. Below, we chose Reddit</li>
+![codeNyoutube](https://user-images.githubusercontent.com/44531143/54855506-f93bdc80-4ccc-11e9-8c4b-ae9f9fcfe234.png)
 
-![reddit](https://user-images.githubusercontent.com/44531143/54790956-53c23380-4c0e-11e9-9d9e-16cd03311cd8.gif)
+<li>Just want to practice coding? Go to the side menu and check out our Coding Sandbox where you can code until your heart is content.</li>
 
-<h2>Built With</h2>
-<h4>Front End</h4>
+![acecorder](https://user-images.githubusercontent.com/44531143/54800044-59337400-4c36-11e9-8853-35c969ca53fa.gif)
+
+
+<h3>Not feeling Youtube or want to check out a different form of media?</h3>
+<li>Hover over to the side menu and check out our other options... like Reddit</li>
+
+![reddit](https://user-images.githubusercontent.com/44531143/54861448-3e790200-4cff-11e9-84eb-415bb3201ef0.gif)
+
+<li>Find something you like? Add it to your favorites so you can refer back to that topic later!</li>
+
+![fav](https://user-images.githubusercontent.com/44531143/54860915-8431cc80-4cf7-11e9-9017-784b79063812.png)
+
+<br>
+
+![favpage](https://user-images.githubusercontent.com/44531143/54861188-afb6b600-4cfb-11e9-803f-5c74b21d15de.png)
+
+<h1>Built With</h1>
+<h2>Front End:</h2>
 <li>HTML5 </li>
 <li>CSS3</li>
 <li>Bootstrap</li>
 <li>JavaScript</li>
 <li>jQuery</li>
 
-<h4>Back End</h4>
+<h2>Back End:</h2>
 <li>Node.js</li>
 <li>Express</li>
 <li>MySQL</li>
@@ -41,7 +57,7 @@ Not feeling Youtube or want to check out a different form of media?
 <li>Handlebars</li>
 <li>Passport</li>
 
-<h2>Team work makes the dream work:</h2>
+<h1>Team work makes the dream work:</h1>
 <ul>
 
 ![ds](https://user-images.githubusercontent.com/44531143/54729880-3df43600-4b5c-11e9-9ddc-a5cbe911ac43.png)<a href="https://github.com/CodingDom" target="_blank">Dominic Smith</a></li>
@@ -56,7 +72,10 @@ Not feeling Youtube or want to check out a different form of media?
 ![so](https://user-images.githubusercontent.com/44531143/54730004-cecb1180-4b5c-11e9-849e-351eee81a498.png)<a href="https://github.com/Seanodo8" target="_blank">Sean O'Donnell</a></li>
 </ul>
 
-<h4>Acknowledgments</h4>
+<h1>License</h1>
+This project is licensed under the MIT License
+
+<h1>Acknowledgments</h1>
 <ul>
 <li>Reddit API</li>
 <li>Stack Overflow API</li>
