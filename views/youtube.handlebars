@@ -14,7 +14,7 @@
     <h5 class="card-title" id="dataTitle">{{snippet.title}}</h5>
     <p class="card-text" id="description">{{snippet.description}}</p>
     <button class="btn btn-primary viewBtn" value="{{id.videoId}}">View Video</button>
-    <button class="btn btn-primary faveIt" value="{{id.videoId}}" >Favorites</button>
+    <button class="btn btn-primary faveIt" data-videoId="{{id.videoId}}" data-type="youtube" data-title="{{snippet.title}}" data-url="https://www.youtube.com/watch?v={{id.videoId}}">Favorites</button>
   </div>
 </div>
 </div>

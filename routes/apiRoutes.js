@@ -32,6 +32,7 @@ module.exports = function(app, passport) {
       title: req.body.title,
       score: req.body.score,
       url: req.body.url,
+      videoId: req.body.videoId,
       UserId: req.user.id
     })
       .then(function() {

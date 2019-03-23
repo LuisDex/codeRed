@@ -80,7 +80,7 @@ module.exports = function(app) {
     // Making sure the search is code related
     if (req.query.search.toLowerCase().indexOf("coding") === -1) url += "+coding";
 
-    url += "&key=AIzaSyDru7LuP-KoZeYSJjNssMn-Jmf2cKODnMw";
+    url += "&key=AIzaSyDpzh6xZjUV67hejnx9GGiRU6NdYZnluMo";
     axios.get(url)
     .then(function(resp) {
       var items = resp.data.items;
@@ -112,6 +112,9 @@ module.exports = function(app) {
   // Rendering a user's favorites
   app.get("/users/:id/favorites", function(req, res) {
     db.Favorite.findAll({ where: { UserId: req.params.id } }).then(function(data) {
+      data.forEach(function(item) {
+        item[item.type] = true;
+      });
       res.render("favorites", {
         items: data
       });

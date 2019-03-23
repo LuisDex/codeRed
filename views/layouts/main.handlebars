@@ -106,12 +106,23 @@
     });
 
     $(".faveIt").on("click",function(event){
-     
-     var vidID = $(this).val();
-     faveTitle = $(".dataTitle").text();
-     console.log(vidID);
-     console.log(faveTitle);
-
+      var btn = $(this);
+      var favInfo = {
+        title: btn.data("title"),
+        type: btn.data("type")
+      };
+      if (btn.data("videoId")) {
+        favInfo.videoId = btn.data("videoId");
+      }
+      if (btn.data("url")) {
+        favInfo.url = btn.data("url");
+      }
+      if (btn.data("score")) {
+        favInfo.score = btn.data("score");
+      }
+      $.post("/api/favorite", favInfo, function(res) {
+        console.log(res);
+      });
     });
 
     $(".viewBtn").on("click", function (event) {
@@ -127,12 +138,10 @@
       location.replace("/youtube?search=" + searchQuery);
     });
 
-    $(".faveIt").on("click",function(event){
-
-    })
     $("#codeIt").on("click", function () {
       $("#codeDiv").toggle()
-    })
+    });
+
     let editor = $("#editor")
     function update() {
       var idoc = document.getElementById('iframe') || document.getElementById('iframeMini');
