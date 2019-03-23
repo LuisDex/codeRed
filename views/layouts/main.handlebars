@@ -46,16 +46,24 @@
     $(".sideBtn").on("click", function (event) {
       event.preventDefault();
       var sideValue = $(this).val();
-      console.log(sideValue);
       var searchQuery = sessionStorage.getItem("search");
 
       switch (sideValue) {
         case "profile":
+          $.get("/api/user_data",function(data)
+          {
+            location.replace("/users/" + data.id);
+          });
           break;
         case "code":
           location.replace("/editor");
           break;
         case "faves":
+        $.get("/api/user_data",function(data)
+        {
+          location.replace("/users/" + data.id +"/favorites");
+        });
+        
           break;
         default:
           location.replace("/" + sideValue + "?search=" + searchQuery);
@@ -87,6 +95,15 @@
       location.replace("/youtube?search=" + searchQuery);
     });
 
+    $(".faveIt").on("click",function(event){
+     
+     var vidID = $(this).val();
+     faveTitle = $(".dataTitle").text();
+     console.log(vidID);
+     console.log(faveTitle);
+
+    });
+
     $(".viewBtn").on("click", function (event) {
       event.preventDefault();
       var idVideo = $(this).val();
@@ -100,6 +117,9 @@
       location.replace("/youtube?search=" + searchQuery);
     });
 
+    $(".faveIt").on("click",function(event){
+
+    })
     $("#codeIt").on("click", function () {
       $("#codeDiv").toggle()
     })

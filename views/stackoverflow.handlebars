@@ -1,13 +1,18 @@
+<div class="container titleContainer">
+<h1 class="titleText"><u>Stack Overflow Articles</u></h1>
+<p class="titleText">Below you can find some Stack Overflow Articles related to your search result.</p>
+<p class="titleText">Click on the link in the article to be redirected to the post</p>
+<p class="titleText">To save the article for later viewing, click the "Save to Faves" button.</p>
+</div>
+
 {{#each items}}
 <div class="col-sm-6 offset-sm-3">
-<div class="card">
-<div class="media">
-    <img class="align-self-start mr-3" src="{{owner.profile_image}}" alt="Poster Image">
-    <div class="media-body">
+<div class="card stackCard">
     <div class="card-header">
-        <h5 class="mt-0">{{title}}</h5>
+        <h5 class="mt-0" id="dataTitle">{{title}}</h5>
         </div>
-        <div class="card-body stackCard">
+        <div class="card-body">
+            <img class="float-left postImg" src="{{owner.profile_image}}" alt="Poster Image">
         <p>Username: {{owner.display_name}}</p>
         <p>Tags: {{tags}}</p>
         <p>Score: {{score}} </p>
@@ -18,8 +23,9 @@
         {{/if}}
         <a href="{{link}}" target="_blank">{{link}}</a>
        </div>
-    </div> 
-</div>
+<div class="card-footer">
+            <button class="btn btn-primary btn-lg btn-block faveIt" value="">Save to Faves</button>
+        </div>
 </div>
 </div>
 {{/each}}

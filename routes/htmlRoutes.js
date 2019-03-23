@@ -1,4 +1,5 @@
 var axios = require("axios");
+var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
@@ -53,7 +54,7 @@ module.exports = function(app) {
 
   app.get("/stackoverflow", function(req, res) {
     if (!req.query || !req.query.search) return res.status(404).end();
-    let url = "http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&site=stackoverflow&key=";
+    let url = "http://api.stackexchange.com/2.2/search/advanced?order=desc&sort=relevance&site=stackoverflow&key=";
     url += "bbiQ0G37kJkUnY2bDcjyyQ((";
     url += "&q=" + req.query.search;
     axios.get(url)
@@ -73,7 +74,7 @@ module.exports = function(app) {
   app.get("/youtube", function(req, res) {
     if (!req.query || !req.query.search) return res.status(404).end();
     let url = "https://www.googleapis.com/youtube/v3/search?part=snippet";
-    url += "&maxResults=8";
+    url += "&maxResults=9";
     url += "&q=" + req.query.search.replace(" ","+");
 
     // Making sure the search is code related
@@ -102,7 +103,7 @@ module.exports = function(app) {
         blurb: data.blurb,
         myAccount: (req.params.id == data.id)
       }
-      res.render("users", {
+      res.render("user", {
         info: user_info
       });
     });
