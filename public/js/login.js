@@ -23,7 +23,7 @@ $(document).ready(function() {
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
     $("button[type='submit']").attr("disabled", true);
-    $("button[type='submit']").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Logging In...`)
+    $("button[type='submit']").html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Logging In...`)
     $.post("/api/login", {
       email: email,
       password: password
