@@ -80,7 +80,7 @@ module.exports = function(app) {
     // Making sure the search is code related
     if (req.query.search.toLowerCase().indexOf("coding") === -1) url += "+coding";
 
-    url += "&key=AIzaSyDpzh6xZjUV67hejnx9GGiRU6NdYZnluMo";
+    url += "&key=AIzaSyAvWINq1Jg9xWSDHE2v1shoflI3EpXz9t4";
     axios.get(url)
     .then(function(resp) {
       var items = resp.data.items;
